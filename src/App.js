@@ -30,7 +30,7 @@ class App extends Component {
          method: 'POST',
      })
          .then(function (res) {
-             if(res.code === '200')
+             if(res.status === 200)
              console.log("successful")
          })
 
