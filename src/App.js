@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button,Form,Input,Row,Col,Select,Radio} from 'antd'
+import {Button,Form,Input,Row,Col,Select,Radio,notification} from 'antd'
 import Autocomplete from 'react-google-autocomplete'
 import './App.css';
 
@@ -25,7 +25,21 @@ class App extends Component {
         })
     }
 
+
+
+    checkParams(){
+        let {keywords}=this.state
+        console.log(keywords)
+        if(keywords===''){
+            notification.warn({
+                description:'请输入关键字'
+            })
+         }
+         return false
+        }
+
     searchPlace() {
+        this.checkParams()
         console.log("start")
      fetch(`http://127.0.0.1:2001`, {
          method: 'POST',
@@ -145,7 +159,7 @@ class App extends Component {
                             <Col span={5}>
                                 <Button type="primary" icon="search"
                                         style={{width:'6rem'}}
-                                        onClick={this.searchPlace()}>Search
+                                        onClick={()=>this.searchPlace()}>Search
                                 </Button>
                             </Col>
                             <Col span={3}>
