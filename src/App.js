@@ -41,12 +41,13 @@ class App extends Component {
     searchPlace() {
         this.checkParams()
         console.log("start")
-     fetch(`http://127.0.0.1:2001`, {
+         fetch(`http://ip-api.com/json`, {
          method: 'POST',
      })
          .then(function (res) {
+             const result=res.data.city
              if(res.status=== 200)
-             console.log("successful")
+             console.log(result)
          })
 
 
