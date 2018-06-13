@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button,Form,Input,Row,Col,Select,Radio} from 'antd'
+import Autocomplete from 'react-google-autocomplete'
 import './App.css';
 
 
@@ -30,7 +31,7 @@ class App extends Component {
          method: 'POST',
      })
          .then(function (res) {
-             if(res.status === 200)
+             if(res.status=== 200)
              console.log("successful")
          })
 
@@ -127,9 +128,17 @@ class App extends Component {
                             <Col span={6}>
                             </Col>
                             <Col span={14}>
-                                <Input type="text"
-                                       onChange={(e)=>this.handleChange('place_from_input',e)}
-                                       value={place_from_input} disabled={place_from||place_from===""}/>
+                                {/*<Input type="text"*/}
+                                       {/*onChange={(e)=>this.handleChange('place_from_input',e)}*/}
+                                       {/*value={place_from_input} disabled={place_from||place_from===""}/>*/}
+                                <Autocomplete
+                                    style={{width: '90%'}}
+                                    onPlaceSelected={(place) => {
+                                        console.log(place);
+                                    }}
+                                    types={['(regions)']}
+                                   disabled={place_from||place_from===''}
+                                />
                             </Col>
                         </Row>
                         <Row className="row">
